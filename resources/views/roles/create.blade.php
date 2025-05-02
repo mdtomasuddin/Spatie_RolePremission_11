@@ -24,7 +24,6 @@
 
                         <div class="mb-3">
                             <label class="form-label">Permission</label>
-
                             @foreach ($permissions as $permission)
                                 <li>
                                     <input type="checkbox" name="permissions[]" value="{{ $permission->id }}"
@@ -34,7 +33,6 @@
                                     </label>
                                 </li>
                             @endforeach
-
                         </div>
 
                         <button type="submit" class="btn btn-primary">submit</button>
