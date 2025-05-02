@@ -10,8 +10,9 @@
                 </div>
 
                 <div class="card-body">
-                    <a href="{{ route('roles.create') }}" type="submit" class="btn btn-primary mb-3">Create Roles</a>
-
+                    {{-- @can('role.create') --}}
+                        <a href="{{ route('roles.create') }}" type="submit" class="btn btn-primary mb-3">Create Roles</a>
+                    {{-- @endcan --}}
                     <div>
                         <table class="table table-dark table-striped">
                             <thead>
@@ -33,11 +34,18 @@
                                             @endforeach
                                         </td>
                                         <td scope="col">
-                                            <a href="{{ route('roles.show', [$role->id]) }}" class="btn btn-info">show</a>
-                                            <a href="{{ route('roles.edit', [$role->id]) }}"
-                                                class="btn btn-primary">Edit</a>
-                                            <a href="{{ route('roles.destroy', [$role->id]) }}"
-                                                class="btn btn-danger">Delete</a>
+                                            @can('product.view')
+                                                <a href="{{ route('roles.show', [$role->id]) }}" class="btn btn-info">show</a>
+                                            @endcan
+                                            @can('role.edit')
+                                                <a href="{{ route('roles.edit', [$role->id]) }}"
+                                                    class="btn btn-primary">Edit</a>
+                                            @endcan
+
+                                            @can('role.delete')
+                                                <a href="{{ route('roles.destroy', [$role->id]) }}"
+                                                    class="btn btn-danger">Delete</a>
+                                            @endcan
                                         </td>
                                     </tr>
                                 @endforeach
