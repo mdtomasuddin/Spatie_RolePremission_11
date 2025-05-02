@@ -8,12 +8,7 @@
             <h1  class="card-title text-center fs-2">All Users Information</h1><br>
         </div>
     </div>
-    @if (session('success'))
-        <div class="alert alert-success" role="alert">
-            {{ session('success') }}
-        </div>
-    @endif
-        
+
     <div class="card-body">
         <a href="{{ route('users.create') }}" type="submit" class="btn btn-primary mb-3">Create User</a>
 

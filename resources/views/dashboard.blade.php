@@ -194,6 +194,16 @@
           </li>
     
           <li class="nav-item menu-open">
+            <a href="{{ route('roles.index') }}" class="nav-link ">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+               Roles
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+          </li>
+    
+          <li class="nav-item menu-open">
             <form action="{{ route('logout') }}" method="POST">
               @csrf
               <button type="submit" class="btn btn-link nav-link">Logout</button>

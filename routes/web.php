@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,3 +40,13 @@ Route::post('/product/update/{id}',[ProductController::class,'update'])->name('p
 Route::get('/product/delete/{id}',[ProductController::class,'destroy'])->name('product.destroy');
 //product show
 Route::get('/product/{id}',[ProductController::class,'show'])->name('product.show');
+
+//Roles Controller 
+Route::get('/roles',[RoleController::class,'index'])->name('roles.index');
+Route::get('/roles/create',[RoleController::class,'create'])->name('roles.create');
+Route::post('/roles/store',[RoleController::class,'store'])->name('roles.store');
+Route::get('/roles/edit/{id}',[RoleController::class,'edit'])->name('roles.edit');
+Route::post('/roles/update/{id}',[RoleController::class,'update'])->name('roles.update');
+Route::get('/roles/delete/{id}',[RoleController::class,'destroy'])->name('roles.destroy');
+//Roles show
+Route::get('/roles/{id}',[RoleController::class,'show'])->name('roles.show');

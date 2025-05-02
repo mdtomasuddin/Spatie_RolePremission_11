@@ -4,22 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
     public function index()
     {
         $users = User::all();
-        return view('users.index',['users' => $users]);	
+        return view('users.index', ['users' => $users]);
     }
-//users create
+    //users create
     public function create()
     {
-        // Logic to retrieve and display users
-        return view('users.create');
+        return view('users.create', ['roles' => $roles]);
     }
 
-//user store
+    //user store
     public function store(Request $request)
     {
         $request->validate([
@@ -28,20 +28,20 @@ class UserController extends Controller
             'password' => 'required|string|min:8',
         ]);
 
-         User::create([
+        User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' =>$request->password,
+            'password' => $request->password,
         ]);
         return redirect()->route('users.index')->with('success', 'User created successfully.');
     }
-//users edit 
+    //users edit 
     public function edit($id)
     {
         $user = User::findOrFail($id);
         return view('users.edit', ['user' => $user]);
     }
-//user update 
+    //user update 
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -55,7 +55,7 @@ class UserController extends Controller
         $user->save();
         return redirect()->route('users.index')->with('success', 'User updated successfully.');
     }
-//user delete
+    //user delete
     public function destroy($id)
     {
         $user = User::findOrFail($id);
